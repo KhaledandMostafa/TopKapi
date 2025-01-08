@@ -1,0 +1,314 @@
+openapi: 3.0.0
+info:
+  title: Cart API
+  description: API for managing users, products, and cart operations.
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:{port}'
+    description: 'Local development server'
+    variables:
+      port:
+        default: '3000'
+        description: 'Port for local development'
+
+paths:
+  /users:
+    get:
+      summary: 'Get all users'
+      description: 'Fetches all users from the database.'
+      responses:
+        '200':
+          description: 'A list of users.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    email:
+                      type: string
+        '500':
+          description: 'Database query failed.'
+
+  /products:
+    get:
+      summary: 'Get all products'
+      description: 'Fetches all products from the database.'
+      responses:
+        '200':
+          description: 'A list of products.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    price:
+                      type: number
+                      format: float
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    image:
+                      type: string
+                    rating_rate:
+                      type: number
+                      format: float
+                    rating_count:
+                      type: integer
+                    image_cover:
+                      type: string
+        '500':
+          description: 'Database query failed.'
+
+  /products/{id}:
+    get:
+      summary: 'Get a product by ID'
+      description: 'Fetches a product from the database by its ID.'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Product details.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  price:
+                    type: number
+                    format: float
+                  description:
+                    type: string
+                  category:
+                    type: string
+                  image:
+                    type: string
+                  rating_rate:
+                    type: number
+                    format: float
+                  rating_count:
+                    type: integer
+                  image_cover:
+                    type: string
+        '404':
+          description: 'Product not found.'
+        '500':
+          description: 'Database query failed.'
+
+  /signin:
+    post:
+      summary: 'User login'
+      description: 'Allows a user to log in with email and password.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: 'Login successful.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  token:
+                    type: string
+                  userdata:
+                    type: array
+                    items:
+                      type: string
+        '401':
+          description: 'Invalid email or password.'
+        '500':
+          description: 'Database query failed.'
+
+  /signup:
+    post:
+      summary: 'User registration'
+      description: 'Registers a new user with username, email, and password.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: 'User created successfully.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  token:
+                    type: string
+                  userdata:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: 'Email already exists.'
+        '500':
+          description: 'Database query failed.'
+
+  /cart:
+    post:
+      summary: 'Add item to cart'
+      description: 'Adds a product to the cart for a user.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                product_id:
+                  type: integer
+                quantity:
+                  type: integer
+      responses:
+        '201':
+          description: 'Item added to cart.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  cart_item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      cart_id:
+                        type: integer
+                      product_id:
+                        type: integer
+                      quantity:
+                        type: integer
+        '404':
+          description: 'Product not found.'
+        '500':
+          description: 'Internal server error.'
+
+  /cart/{cartItemId}:
+    delete:
+      summary: 'Remove item from cart'
+      description: 'Removes an item from the cart.'
+      parameters:
+        - in: path
+          name: cartItemId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Item removed from cart.'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  cart_item:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      cart_id:
+                        type: integer
+                      product_id:
+                        type: integer
+                      quantity:
+                        type: integer
+        '404':
+          description: 'Cart item not found.'
+        '500':
+          description: 'Internal server error.'
+
+  /cart/{userId}:
+    get:
+      summary: 'View cart'
+      description: 'Fetches the cart for a specific user.'
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The user''s cart items.'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cart_item_id:
+                      type: integer
+                    product_id:
+                      type: integer
+                    title:
+                      type: string
+                    price:
+                      type: number
+                      format: float
+                    quantity:
+                      type: integer
+                    image:
+                      type: string
+        '404':
+          description: 'Cart not found.'
+        '500':
+          description: 'Internal server error.'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  security:
+    - BearerAuth: []
