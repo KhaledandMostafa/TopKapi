@@ -1,0 +1,481 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.logo {
+  width: 75px;
+  height: auto;
+}
+
+.ErrorMsgLogin {
+  color: red;
+}
+
+/* Contact page styles */
+.contact-container {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fa;
+  padding: 40px;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h1 {
+  font-size: 2.5em;
+  color: #2c3e50;
+}
+
+.contact-header p {
+  font-size: 1.2em;
+  color: #7f8c8d;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.team-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.team-member {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 48%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
+}
+
+.team-member h2 {
+  font-size: 1.8em;
+  color: #2980b9;
+}
+
+.team-member p {
+  font-size: 1.1em;
+  color: #34495e;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.team-member h3 {
+  font-size: 1.3em;
+  margin-top: 20px;
+  color: #34495e;
+}
+
+.team-member ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.team-member ul li {
+  font-size: 1.1em;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.team-member ul li a {
+  text-decoration: none;
+  color: #2980b9;
+  transition: color 0.3s ease;
+}
+
+.team-member ul li a:hover {
+  color: #16a085;
+}
+
+.location {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.location h3 {
+  font-size: 1.8em;
+  color: #2980b9;
+}
+
+.location p {
+  font-size: 1.2em;
+  color: #34495e;
+}
+
+.location p:last-child {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+.star {
+  color: #ffd43b;
+}
+
+.products-container {
+  display: grid; /* استخدام grid لعرض العناصر في شبكة */
+  grid-template-columns: repeat(4, 1fr); /* عرض 4 منتجات في كل صف */
+  gap: 20px; /* المسافة بين العناصر */
+  padding: 15px; /* المسافة حول الحاوية */
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff; /* لون خلفية للبطاقة */
+  padding: 12px; /* تقليل التباعد داخل البطاقة */
+  border-radius: 8px; /* حواف دائرية */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير التفاعل */
+  text-align: center;
+  height: 350px; /* تحديد ارتفاع ثابت للبطاقة */
+  width: 250px; /* تحديد عرض ثابت للبطاقة */
+  position: relative; /* إضافة position لتحديد مكان الزر بشكل صحيح */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* رفع البطاقة عند التمرير فوقها */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* زيادة الظل عند التمرير */
+}
+
+.product-card img {
+  width: 100%; /* الصورة ستأخذ عرض البطاقة بالكامل */
+  height: 200px; /* تحديد ارتفاع ثابت لجميع الصور */
+  object-fit: contain; /* الحفاظ على الصورة كاملة داخل المساحة المخصصة لها */
+  border-radius: 8px;
+  margin-bottom: 12px; /* مسافة أسفل الصورة */
+}
+
+h2 {
+  font-size: 14px; /* تقليل حجم الخط للعناوين */
+  font-weight: 600;
+  color: #333;
+  margin: 8px 0; /* مسافة حول العنوان */
+  line-height: 1.4;
+  height: 40px; /* تحديد ارتفاع ثابت للعنوان */
+  overflow: hidden; /* إخفاء النص الزائد */
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px; /* تقليل حجم الخط */
+  color: #666;
+  margin-bottom: 10px; /* مسافة أسفل التقييم والسعر */
+}
+
+.product-price {
+  font-weight: bold;
+  color: #27ae60; /* لون السعر الأخضر */
+}
+
+.product-rating {
+  font-size: 12px; /* تقليل حجم الخط لتقييم المنتج */
+  color: #f39c12; /* لون النجمة الذهبية */
+}
+
+.star {
+  color: #f39c12; /* لون النجمة الذهبية */
+}
+
+/* زر يظهر عند التمرير فوق البطاقة */
+.view-details-btn {
+  position: absolute;
+  bottom: 10px; /* تحديد موقع الزر أسفل البطاقة */
+  left: 50%;
+  transform: translateX(-50%); /* توسيط الزر */
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #3498db; /* لون الزر الأزرق */
+  border: none;
+  border-radius: 5px;
+  opacity: 0; /* الزر مخفي بشكل افتراضي */
+  pointer-events: none; /* منع التفاعل مع الزر عندما يكون مخفيًا */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover .view-details-btn {
+  opacity: 1; /* إظهار الزر عند التمرير فوق البطاقة */
+  pointer-events: auto; /* تمكين التفاعل مع الزر */
+  transform: translateX(-50%) translateY(-5px); /* رفع الزر قليلاً عند التمرير فوق البطاقة */
+}
+
+.loader {
+  width: 1280x;
+  height: 720px;
+  display: block;
+  margin: auto;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+}
+.loader::after {
+  content: "";
+  width: calc(100% - 100px);
+  height: calc(100% - 15px);
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    ),
+    linear-gradient(#ddd 100px, transparent 0),
+    linear-gradient(#ddd 16px, transparent 0),
+    linear-gradient(#ddd 50px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 75px 175px, 100% 100px, 100% 16px, 100% 30px;
+  background-position: -185px 0, center 0, center 115px, center 142px;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite;
+}
+
+@keyframes animloader {
+  to {
+    background-position: 185px 0, center 0, center 115px, center 142px;
+  }
+}
+
+.Mssagee {
+  align-items: center;
+  text-align: center;
+
+  padding: 50px;
+}
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.item-image {
+  width: 200px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  object-fit: cover;
+  margin-right: 10px; /* Space between image and text */
+}
+
+.item-details {
+  max-width: 600px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.item-price-rating {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  gap: 20px; /* Space between price and rating */
+  align-items: center;
+}
+
+.item-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #778f0b;
+}
+
+.item-rating {
+  font-size: 16px;
+  color: #92600e;
+}
+
+/* تنسيق الحاوية الرئيسية */
+.cart-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.cart-header {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* الفجوة بين العناصر */
+}
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* الفجوة بين العناصر */
+}
+
+.shop {
+  font-size: 40px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* محاذاة العناصر أفقياً في المنتصف */
+  align-items: center;
+}
+.total {
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* محاذاة العناصر أفقياً في المنتصف */
+  align-items: center;
+}
+
+/* تنسيق العناصر الرئيسية في الجدول */
+.cart-header {
+  display: flex;
+  justify-content: space-between; /* توزيع الأعمدة بالتساوي */
+  font-weight: bold;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.cart-column {
+  flex: 1;
+  padding: 10px;
+  text-align: left;
+}
+
+/* تنسيق العناصر داخل كل صف */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cart-image {
+  width: 100px;
+  height: auto;
+}
+
+/* تنسيق الأزرار الخاصة بالكميات */
+.quantity-button {
+  padding: 8px 15px;
+  margin: 0 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-button:hover {
+  background-color: #45a049;
+}
+
+/* تنسيق الكمية */
+.cart-quantity {
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+/* تنسيق النص "Remove" */
+.remove-item {
+  color: red;
+  cursor: pointer;
+}
+
+.add-to-cart-button {
+  background-color: #28a745; /* Green background */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%; /* Makes the button full width */
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.add-to-cart-button:focus {
+  outline: none; /* Remove the outline on focus */
+}
